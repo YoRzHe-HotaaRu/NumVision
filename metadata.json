@@ -1,0 +1,7 @@
+{
+  "name": "NumVision AI",
+  "description": "Real-time hand gesture recognition powered by Gemini 2.5 Flash. Detects numbers shown by your hand fingers instantly.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

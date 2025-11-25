@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NumVision AI</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              border: "var(--border)",
+              input: "var(--input)",
+              ring: "var(--ring)",
+              background: "var(--background)",
+              foreground: "var(--foreground)",
+              primary: {
+                DEFAULT: "var(--primary)",
+                foreground: "var(--primary-foreground)",
+              },
+              secondary: {
+                DEFAULT: "var(--secondary)",
+                foreground: "var(--secondary-foreground)",
+              },
+              destructive: {
+                DEFAULT: "var(--destructive)",
+                foreground: "var(--destructive-foreground)",
+              },
+              muted: {
+                DEFAULT: "var(--muted)",
+                foreground: "var(--muted-foreground)",
+              },
+              accent: {
+                DEFAULT: "var(--accent)",
+                foreground: "var(--accent-foreground)",
+              },
+              popover: {
+                DEFAULT: "var(--popover)",
+                foreground: "var(--popover-foreground)",
+              },
+              card: {
+                DEFAULT: "var(--card)",
+                foreground: "var(--card-foreground)",
+              },
+              sidebar: {
+                DEFAULT: 'var(--sidebar)',
+                foreground: 'var(--sidebar-foreground)',
+                primary: 'var(--sidebar-primary)',
+                'primary-foreground': 'var(--sidebar-primary-foreground)',
+                accent: 'var(--sidebar-accent)',
+                'accent-foreground': 'var(--sidebar-accent-foreground)',
+                border: 'var(--sidebar-border)',
+                ring: 'var(--sidebar-ring)',
+              }
+            },
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
+            fontFamily: {
+              sans: ["DM Sans", "sans-serif"],
+              serif: ["DM Sans", "serif"],
+              mono: ["Space Mono", "monospace"],
+            },
+            animation: {
+              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'scan': 'scan 2s linear infinite',
+            },
+            keyframes: {
+              scan: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      :root {
+        --background: oklch(0.9789 0.0082 121.6272);
+        --foreground: oklch(0 0 0);
+        --card: oklch(1.0000 0 0);
+        --card-foreground: oklch(0 0 0);
+        --popover: oklch(1.0000 0 0);
+        --popover-foreground: oklch(0 0 0);
+        --primary: oklch(0.5944 0.1956 280.6435);
+        --primary-foreground: oklch(1.0000 0 0);
+        --secondary: oklch(0.7038 0.1230 182.5025);
+        --secondary-foreground: oklch(1.0000 0 0);
+        --muted: oklch(0.9551 0 0);
+        --muted-foreground: oklch(0.3211 0 0);
+        --accent: oklch(0.9167 0.0772 81.2604);
+        --accent-foreground: oklch(0 0 0);
+        --destructive: oklch(0.6368 0.2078 25.3313);
+        --destructive-foreground: oklch(1.0000 0 0);
+        --border: oklch(0 0 0);
+        --input: oklch(0.5555 0 0);
+        --ring: oklch(0.7853 0.1041 274.7134);
+        --chart-1: oklch(0.5106 0.2301 276.9656);
+        --chart-2: oklch(0.7038 0.1230 182.5025);
+        --chart-3: oklch(0.7686 0.1647 70.0804);
+        --chart-4: oklch(0.6559 0.2118 354.3084);
+        --chart-5: oklch(0.7227 0.1920 149.5793);
+        --sidebar: oklch(0.9789 0.0082 121.6272);
+        --sidebar-foreground: oklch(0 0 0);
+        --sidebar-primary: oklch(0.5106 0.2301 276.9656);
+        --sidebar-primary-foreground: oklch(1.0000 0 0);
+        --sidebar-accent: oklch(0.7686 0.1647 70.0804);
+        --sidebar-accent-foreground: oklch(0 0 0);
+        --sidebar-border: oklch(0 0 0);
+        --sidebar-ring: oklch(0.7853 0.1041 274.7134);
+        --font-sans: 'DM Sans', sans-serif;
+        --font-serif: 'DM Sans', sans-serif;
+        --font-mono: 'Space Mono', monospace;
+        --radius: 1rem;
+        --tracking-normal: normal;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-sans);
+        overflow: hidden; /* Prevent scrolling in app mode */
+        letter-spacing: var(--tracking-normal);
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--muted);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--muted-foreground);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
